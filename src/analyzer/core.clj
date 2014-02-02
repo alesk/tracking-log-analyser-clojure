@@ -13,14 +13,8 @@
 (defn analyze [input-file report-file]
 
   (with-open
-    [w (io/writer report-file :append true)
-
-     ]
-
-     (let [
-           records (cheshire.core/parsed-seq (io/reader input-file) true)
-
-           ]
+    [w (io/writer report-file :append true)]
+     (let [records (cheshire.core/parsed-seq (io/reader input-file) true)]
      (doseq [[session-id, session-data] (group-by :sessionId records)]
        (let [
              transformed-session (transform-session session-data)

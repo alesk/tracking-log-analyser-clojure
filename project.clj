@@ -7,4 +7,5 @@
                  [org.clojure/clojure "1.5.1"]
                  [cheshire "5.3.1"]
                  [selmer "0.5.9"]
+                 [prismatic/schema "0.2.0"]
                  ])

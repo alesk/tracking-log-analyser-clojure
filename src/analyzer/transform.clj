@@ -1,6 +1,11 @@
 (ns analyzer.transform
-  (:import [java.lang.Math])
+  (:require [schema.core :as s]
+            [analyzer.schema :refer [GeoIp LogRecord]])
+
+  (:import [java.lang.Math]
+           [java.lang.Boolean])
 )
+
 
 
 (declare video-data to-segments extract-video-data  error?)
@@ -17,6 +22,8 @@
         video-data (extract-video-data session-data)
         ]
 
+
+    (s/validate [LogRecord] session-data)
     (merge {:user-agent (first (remove empty? (map :userAgent session-data)))}
      video-data)
   ))
@@ -75,7 +82,6 @@
        :segments-duration segments-duration
        :total-playing-time total-playing-time
        :segments segments
-       :video-play-attempted (some video-play-attempted? session-data)
       }
    )
 )
