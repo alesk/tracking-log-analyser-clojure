@@ -38,13 +38,13 @@
        (when (nil? video-play-succeeded-at)
          {:type :error
           :code :e002
-          :message "Session doesn't contain videoPlaySucceded event."
+          :message "Session doesn't contain videoPlaySucceeded event."
           })
 
-       (when (not (start-segment-event? (:name (first segments))))
+       (when (not (start-segment-event? (first (first segments))))
          {:type :error
           :code :e003
-          :message (str "Segment must start with: " (clojure.string/join ", " START_SEGMENT_EVENTS))
+          :message (str "Segment must start with: " (clojure.string/join ", " START_SEGMENT_EVENTS) " -- " (first (first segments)))
           })
 
 
