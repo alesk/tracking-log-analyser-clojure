@@ -77,7 +77,7 @@
 
        :screen-show-at (:clinetTimestamp screen-shown)
        :video-play-attempted-at (:initiationTimestamp video-play-attempted)
-       :video-play-succeeded-at (:clinetTimestamp video-play-succeeded)
+       :video-play-succeeded-at (:clientTimestamp video-play-succeeded)
        :duration max-duration
        :segments-duration segments-duration
        :total-playing-time total-playing-time

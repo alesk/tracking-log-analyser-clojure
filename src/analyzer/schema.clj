@@ -15,25 +15,36 @@
             :countryCode (s/maybe s/Str)
             :city (s/maybe s/Str)
             })
+(def ExperimentTag {
+                    :random java.lang.Boolean
+                    :variant s/Str
+                    :name s/Str
+                    :scope s/Str
+                    })
 
 (def LogRecord
   "Celtra's log received from runner."
   {
+   :name s/Str
+   :receiver s/Str
+   :receiverHostname s/Str
+   :sessionId s/Str
+   :timestamp (s/either s/Num s/Str)
+
    (s/optional-key :clientTimestamp) (s/maybe (s/either s/Num s/Str))
    (s/optional-key :index) s/Int
    (s/optional-key :instantiation) s/Str
-   :name s/Str
    (s/optional-key :objectClazz) (s/maybe s/Str)
    (s/optional-key :objectLocalId) (s/maybe s/Int)
    (s/optional-key :objectName) (s/maybe s/Str)
    (s/optional-key :position) s/Num
-   :receiver s/Str
+
    (s/optional-key :initiationTimestamp) s/Num
-   :receiverHostname s/Str
+
    (s/optional-key :screenIsMaster) java.lang.Boolean
    (s/optional-key :screenLocalId) s/Int
    (s/optional-key :screenTitle) s/Str
-   :sessionId s/Str
+
    (s/optional-key :url) s/Str
    (s/optional-key :duration) s/Num
    (s/optional-key :to) s/Num
@@ -50,7 +61,7 @@
    (s/optional-key :geoip) GeoIp
    (s/optional-key :version) s/Int
    (s/optional-key :externalSiteId) (s/maybe s/Str)
-   :timestamp (s/either s/Num s/Str)
+
    (s/optional-key :first) java.lang.Boolean
    (s/optional-key :sdk) s/Str
    (s/optional-key :userAgent) s/Str
@@ -63,7 +74,7 @@
    (s/optional-key :externalPlacementName) (s/maybe s/Str)
    (s/optional-key :externalCreativeName) (s/maybe s/Str)
    (s/optional-key :externalCreativeId) (s/maybe s/Str)
-   (s/optional-key :experimentTags) [s/Str]
+   (s/optional-key :experimentTags) [ExperimentTag]
    (s/optional-key :placementId) (s/maybe s/Str)
    (s/optional-key :externalSiteName) (s/maybe s/Str)
    (s/optional-key :externalAdServer) (s/maybe s/Str)
